@@ -9,7 +9,6 @@ class StaticPagesController < ApplicationController
   end
 
   def contact
-    @user = User.last;
   end
 
 end
