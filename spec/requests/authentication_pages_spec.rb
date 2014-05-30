@@ -38,6 +38,9 @@ describe "Authentication" do
 
       describe "followed by signout" do
         before { click_link "Sign out" }
+        it { should_not have_link('Users',       href: users_path) }
+        it { should_not have_link('Profile',     href: user_path(user)) }
+        it { should_not have_link('Settings',    href: edit_user_path(user)) }
         it { should have_link('Sign in') }
       end
     end
@@ -62,27 +65,36 @@ describe "Authentication" do
         it "should render the desired protected page" do
           expect(page).to have_title('Edit user')
         end
+
+
+        describe "" do
+
+          it ""do
+
+          end
+        end
+
+
       end
     end
 
-      describe "in the Users controller" do
+    describe "in the Users controller" do
 
-        describe "visiting the edit page" do
-          before { visit edit_user_path(user) }
-          it { should have_title('Sign in') }
-        end
-
-        describe "submitting to the update action" do
-          before { patch user_path(user) }
-          specify { expect(response).to redirect_to(signin_path) }
-        end
-
-        describe "visiting the user index" do
-          before { visit users_path }
-          it { should have_title('Sign in') }
-        end
-
+      describe "visiting the edit page" do
+        before { visit edit_user_path(user) }
+        it { should have_title('Sign in') }
       end
+
+      describe "submitting to the update action" do
+        before { patch user_path(user) }
+        specify { expect(response).to redirect_to(signin_path) }
+      end
+
+      describe "visiting the user index" do
+        before { visit users_path }
+        it { should have_title('Sign in') }
+      end
+    end
   end
 
 
