@@ -1,7 +1,6 @@
 = simple_form_for @micropost  do |f|
   /= render 'shared/error_messages', object: f.object
-  = f.error_notification
   div class="field"
-    = f.textarea :content, placeholder: 'Compose new micropost...'
+    = f.input :content, as: :text, placeholder: 'Compose new micropost...'
   = f.error :base
   = f.submit 'Post', input_html: {class: "btn btn-large btn-primary"}
